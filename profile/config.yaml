@@ -1,0 +1,31 @@
+# Example profile config for botmaker (~/.hermes/profiles/botmaker/config.yaml).
+# Hermes manages this file — set values with `hermes -p botmaker config set …`
+# rather than hand-editing (the skill's own rule). Shown here so you can see
+# the shape of a finished botmaker profile.
+
+model:
+  # The independence pin: a provider that survives the failure your fleet
+  # must outlive (typically hosted, when the fleet operates local inference).
+  default: <model>
+  provider: <provider>
+
+memory:
+  # Only if you use the Honcho memory provider; otherwise omit.
+  provider: honcho
+
+# botmaker's job is authoring child-profile SOUL.md files from signed kanban
+# specs. Headless kanban workers have no human approval surface, so the
+# always-ask protected-instruction gate (agents.md / claude.md / soul.md /
+# .cursorrules outside this profile's home) is disabled for THIS profile only.
+# This is what allows botmaker to provision bots from kanban cards unattended:
+# without it, the SOUL.md write blocks on a prompt nobody can see, times out,
+# and the worker ships a stub.
+#
+# Understand the tradeoff before copying it: the default (true) prompts your
+# human on every SOUL.md write — that prompt is the human gate materialized
+# in tooling. With it off, the signed spec on the kanban card is the ONLY
+# gate: no signature, no write (references/soul-craft.md, "Human gate").
+# Leave it at the default if you run botmaker interactively, and never set
+# it fleet-wide.
+security:
+  protected_instruction_files: false

@@ -1,0 +1,16 @@
+# Example profile.yaml (~/.hermes/profiles/botmaker/profile.yaml).
+# Normally Hermes writes this for you: the description comes from
+# `hermes profile describe botmaker --text "…"` and the UI block from the
+# desktop app. Included so a wholesale copy of profile/ still yields a
+# complete profile.
+#
+# The description is the roster one-liner other bots read — one or two
+# sentences, not a group-chat log (SKILL.md, "profile.yaml essays" pitfall).
+# `describe` does NOT set the title; that lives in ui_meta.hermes-bots.title.
+
+description: Specialist-bot maker. Designs SOULs, scaffolds profiles, certifies, owns
+  Bots/. Pinned to <model> so a dead local inference box cannot take down the maker.
+description_auto: false
+ui_meta:
+  hermes-bots:
+    title: Botmaker
