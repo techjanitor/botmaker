@@ -23,11 +23,12 @@ profile/SOUL.md                          the botmaker SOUL — fill the <placeho
 profile/config.yaml                      example profile config — the headless-provisioning security flag, explained
 profile/profile.yaml                     example roster metadata — the one-liner other bots read, plus the UI title
 skills/autonomous-ai-agents/botmaker/
-├── SKILL.md                             the runbook: interview, scaffold, certification, pitfalls
-├── references/soul-craft.md             what goes in a SOUL (and what must not)
-├── references/process.md                independence pin, --no-skills, shared-skill mechanics
+├── SKILL.md                             the runbook: interview, scaffold, certification, failure-mode index
+├── references/soul-craft.md             what goes in a SOUL, and the human gate
+├── references/process.md                independence pin, --no-skills, shared-skill mechanics, kanban intake
 ├── references/vault.md                  documenting the fleet (after certification, never before)
-└── scripts/link_skill_tree.py           file-level symlink linker for shared skills
+├── scripts/link_skill_tree.py           file-level symlink linker for shared skills
+└── scripts/drift_check.py               doc-drift tripwire — run after every mint
 ```
 
 The `skills/` subtree mirrors the canonical Hermes tree, so every path referenced inside the docs is true after install.
@@ -85,6 +86,8 @@ Installing botmaker is your first supervised run of its own method.
    ```
 
 7. **Smoke test.** Open the bot's chat and ask it to mint something deliberately fuzzy ("a bot to help with my projects"). It should refuse to scaffold and ask one sharp question. Give it a sharp job; it should stop at the sign-off gate with a one-screen draft.
+
+8. **Drift tripwire.** `python3 ~/.hermes/skills/autonomous-ai-agents/botmaker/scripts/drift_check.py` should exit clean; run it after every mint and every doc patch. Point `BOTMAKER_VAULT_GUIDE` at your vault's `Bots/making-bots.md` to enable the roster-vs-profiles check. The design it enforces: every rule has one home — method in the skill tree, fleet state in the vault roster, history in the changelog.
 
 ## What to customize
 

@@ -37,8 +37,6 @@ There is no doctor class. A specialist's runbook includes how to diagnose its ow
 
 ## Human gate
 
-The gate is the signature, not the write. Do not write `SOUL.md` on disk, and do not `hermes profile create`, until your human signs the draft — chat sign-off or a signed spec on the task card both count. Iterate in the conversation or on the card.
+The gate is the signature, not the write. Do not write `SOUL.md` on disk, and do not `hermes profile create`, until your human signs the draft — chat sign-off or a signed spec on the task card both count. Iterate in the conversation or on the card. A chat sign-off is your human approving the *specific draft on the table*, in their own words — standing go-ahead phrases qualify when they answer that draft, never as blanket authority. Keep the phrase list in botmaker's `memories/USER.md`.
 
 Mechanics: by default, Hermes prompts your human on every `SOUL.md` write (`security.protected_instruction_files: true`). That prompt is this gate materialized, and it is the right default. We turned it off on this one profile because headless workers have no approval surface — one burned its whole approval window on a prompt nobody could see and shipped a stub. That removed the prompt, not the rule: an unsigned SOUL write is a protocol violation regardless of what the tooling allows. If you flip the flag, understand that you have removed the last mechanical safeguard between a confused bot and your agent's instructions — the signed-draft discipline is then the only gate. Do not flip it casually, and never fleet-wide.
-
-Exception: this bot (`botmaker`) was designed in a prior session and signed as a whole; do not use that as a license to skip the gate on the next child.
